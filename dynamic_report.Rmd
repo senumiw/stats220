@@ -57,5 +57,8 @@ labs(title = "Number of zones travelled on 27H/27W buses by time",
             y = "Number of trips taken",
             caption = "Source: 27H/27W/27T Bus Trips Survey")
 
+library(magick)
+image_read(path ="https://heartofthecity.co.nz/sites/default/files/styles/social_media/public/2019-06/Buses-in-Auckland-city-centre-1.jpg?itok=sDVpcHPC")
+
 ```
 
