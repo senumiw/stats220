@@ -1,0 +1,62 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+
+```
+
+## 27H/27W/27T Bus Trips 
+
+You need to change the contents of this Rmd! Replace the R code and markdown give below in this template document.
+
+```{r}
+library(tidyverse)
+logged_data<-read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQvFgt_R6ls_IimVFRn1n7D1G-vcKmpywkQAlbQiZOtKPUsQx_K_AhMCaHCatp3qW89uR9FNNeq2HLt/pub?gid=1288271793&single=true&output=csv")%>%
+  rename(trip_route = 2,
+       trip_length = 3, 
+       trip_zones = 4,
+       trip_time = 5)
+
+shortest_trip_length<-min(logged_data$trip_length)
+longest_trip_length<-max(logged_data$trip_length)
+
+median_trip_length <-median(logged_data$trip_length)
+median_trip_length
+
+num_responses <- (logged_data$trip_length) %>%
+  length()
+num_responses
+
+paste("The median trip length in minutes reported by the "
+       , num_responses, " people who completed the survey was "
+       , median_trip_length, ".")
+
+paste("The shortest reported trip was ", shortest_trip_length, 
+       " minutes long and the longest reported trip length was "
+       , longest_trip_length, " minutes long." )
+
+logged_data  %>%
+  ggplot() +
+  geom_bar(aes(x = trip_route))+
+labs(title = "Routes travelled on 27H/27W buses",
+     x = "Route travelled",
+     y = "Number of trips taken", 
+     caption = "Source: 27H/27W/27T Bus Trips Survey")
+
+logged_data  %>%
+  ggplot() +
+  geom_bar(aes(x = trip_zones, fill = trip_time)) +
+labs(title = "Number of zones travelled on 27H/27W buses by time",
+            x = "Number of zones travelled",
+            y = "Number of trips taken",
+            caption = "Source: 27H/27W/27T Bus Trips Survey")
+
+```
+
