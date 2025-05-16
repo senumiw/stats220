@@ -1,0 +1,63 @@
+---
+title: Information about 27H/27W bus routes 
+output: html_document
+---
+
+```{=html}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+
+
+```
+
+```{js}
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+```
+
+```{css}
+.figcaption {display: none}
+
+{background-color: "#efedf5"}
+```
+
+## What's going on with this data?
+
+One reason many people choose not to use public transport is its unreliability with buses often running late or occasionally failing to show up altogether. This report focuses on the 27H/27W bus routes along Mt Eden Road. It examines various aspects of these routes, including the punctuality of the services. The data presented was collected over a two-week period through a Google Form.
+
+## Data about the two bus routes
+
+![](my_plot1.png) We can see that I tend to take to 27H bus more often than the 27W and the trip lengths along the 27H route appear to be slightly more varied than those along the 27W route.
+
+![](my_plot2.png)
+
+Again, we can see that there is a lot more data recorded for trips along the 27H route. For both buses, the majority of bus trips appear to be in the afternoon.
+
+## When is the bus coming?
+
+![](my_plot4.png) We can see that more often than not, the buses were late.
+
+![](my_plot3.png) This plot gives us a little more information, breaking down whether the bus was late, did not arrive, was early, or was on time.
+
+## Conclusion
+
+In conclusion, unfortunately, the unreliability of buses is an issue along these two bus routes.
+
+## 
