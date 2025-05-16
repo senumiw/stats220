@@ -60,4 +60,3 @@ Again, we can see that there is a lot more data recorded for trips along the 27H
 
 In conclusion, unfortunately, the unreliability of buses is an issue along these two bus routes.
 
-## 
